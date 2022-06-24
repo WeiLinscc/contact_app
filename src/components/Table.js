@@ -2,22 +2,26 @@ import React, { Component } from 'react';
 class Table extends Component { 
   render() { 
     return ( 
-      <table style={{ marginTop: 16 }} border="1"> 
+      <table className="table" style={{ marginTop: 16 }} border="1"> 
         <thead> 
           <tr> 
             <th>#</th> 
-            <th>Value 1</th> 
-            <th>Value 2</th> 
-            <th>Value 3</th> 
+            <th>First Name</th> 
+            <th>Last Name</th> 
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Image</th>
           </tr> 
         </thead>  
         <tbody> 
           {this.props.entries.map((entry, index) => ( 
             <tr key={index}> 
               <td>{index + 1}</td> 
-              <td>{entry.value1}</td> 
-              <td>{entry.value2}</td> 
-              <td>{entry.value3}</td> 
+              <td>{entry.first_name}</td> 
+              <td>{entry.last_name}</td> 
+              <td>{entry.phone_number}</td>
+              <td>{entry.email}</td> 
+              <td>{entry.image}</td> 
               <td>
                 <button onClick={() => this.props.onEditItem(entry)}>
                   Edit
