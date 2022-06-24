@@ -2,7 +2,7 @@ const db = require('../connection');
 
 module.exports = {
   index(req, res, next) {
-    db.query(`SELECT * FROM items`, (err, results) => {
+    db.query(`SELECT * FROM contacts`, (err, results) => {
       if (err) {
         return res.sendStatus(500);
       }
@@ -13,7 +13,7 @@ module.exports = {
 
   store(req, res, next) {
     db.query(
-      `INSERT INTO items
+      `INSERT INTO contacts
                 (value1, value2, value3)
                 VALUES (?, ?, ?)`,
       [req.body.item.value1, req.body.item.value2, req.body.item.value3],
@@ -36,7 +36,7 @@ module.exports = {
 
   update(req, res, next) {
     db.query(
-      `UPDATE items SET value1 = ?, value2 = ?, value3 = ? WHERE id = ?`,
+      `UPDATE contacts SET value1 = ?, value2 = ?, value3 = ? WHERE id = ?`,
       [
         req.body.item.value1,
         req.body.item.value2,
@@ -55,7 +55,7 @@ module.exports = {
 
   destroy(req, res, next) {
     db.query(
-      `DELETE FROM items  WHERE id = ?`,
+      `DELETE FROM contacts  WHERE id = ?`,
       [req.params.item],
       (err, result) => {
         if (err) {
