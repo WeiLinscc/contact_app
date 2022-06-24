@@ -6,9 +6,11 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      value1: '',
-      value2: '',
-      value3: ''
+      first_name: '',
+      last_name: '',
+      email: '',
+      phone_number: '',
+      image: '',
     };
   }
 
@@ -25,59 +27,45 @@ class Form extends Component {
 
   _clear = () => {
     this.setState({
-      value1: '',
-      value2: '',
-      value3: ''
+      first_name: '',
+      last_name: '',
+      email: '',
+      phone_number: '',
+      image: '',
     });
   };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this._add();
+  }
 
   render() {
     return (
       <div style={{ marginTop: 16 }}>
-        <Button title="Add Entry" onClick={this._add} />
-
-        <form className="row g-3">
-          <div className="col-md-6">
-            <label htmlFor="inputEmail4" className="form-label">Email</label>
-            <input type="email" className="form-control" id="inputEmail4" />
-          </div>
-          <div className="col-md-6">
-            <label htmlFor="inputPassword4" className="form-label">Password</label>
-            <input type="password" className="form-control" id="inputPassword4" />
+        <form className="row g-3" onSubmit={this.handleSubmit}>
+          <div className="col-12">
+            <label htmlFor="firstName" className="form-label">First Name</label>
+            <input value={this.state.first_name} onChange={e => this._handleTextChange('first_name', e.target.value)} required type="text" className="form-control" id="firstName" placeholder="First Name" name="first_name" />
           </div>
           <div className="col-12">
-            <label htmlFor="inputAddress" className="form-label">Address</label>
-            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+            <label htmlFor="lastName" className="form-label">Last Name</label>
+            <input value={this.state.last_name} onChange={e => this._handleTextChange('last_name', e.target.value)} type="text" className="form-control" id="lastName" placeholder="Last Name" name="last_name" />
           </div>
           <div className="col-12">
-            <label htmlFor="inputAddress2" className="form-label">Address 2</label>
-            <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
-          </div>
-          <div className="col-md-6">
-            <label htmlFor="inputCity" className="form-label">City</label>
-            <input type="text" className="form-control" id="inputCity" />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="inputState" className="form-label">State</label>
-            <select id="inputState" className="form-select" defaultValue="selected">
-              <option value="selected">Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div className="col-md-2">
-            <label htmlFor="inputZip" className="form-label">Zip</label>
-            <input type="text" className="form-control" id="inputZip" />
+            <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
+            <input value={this.state.phone_number} onChange={e => this._handleTextChange('phone_number', e.target.value)} required type="text" className="form-control" id="phoneNumber" placeholder="Phone Number" name="phone_number" />
           </div>
           <div className="col-12">
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" id="gridCheck" />
-                <label className="form-check-label" htmlFor="gridCheck">
-                  Check me out
-                </label>
-            </div>
+            <label htmlFor="email" className="form-label">Email</label>
+            <input value={this.state.email} onChange={e => this._handleTextChange('email', e.target.value)} type="email" className="form-control" id="email" placeholder="Email" name="email" />
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-primary">Sign in</button>
+            <label htmlFor="image" className="form-label">Image</label>
+            <input value={this.state.image} onChange={e => this._handleTextChange('image', e.target.value)} type="text" className="form-control" id="image" placeholder="Image" name="image" />
+          </div> 
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary">Add Contact</button>
           </div>
         </form>
       </div>
