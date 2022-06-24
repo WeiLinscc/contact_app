@@ -71,7 +71,8 @@ class App extends Component {
   };
 
   _deleteEntry = entry => {
-    api
+    if (window.confirm('Delete contact?') == true) {
+      api
       .deleteItem(entry)
       .then(() => {
         // filter entries where ids dont match one being deleted
@@ -82,6 +83,7 @@ class App extends Component {
       .catch(error => {
         console.log('Failed to delete item...');
       });
+    }
   };
 
   render() {
