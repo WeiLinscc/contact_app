@@ -23,11 +23,10 @@ class Table extends Component {
               <td>{entry.email}</td> 
               <td>{entry.image}</td> 
               <td>
-                <button onClick={() => this.props.onEditItem(entry)}>
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editContactModal" onClick={() => this.props.onEditItem(entry)}>
                   Edit
                 </button>
-
-                <button onClick={() => this.props.onDeleteItem(entry)}>
+                <button type="button" className="btn btn-danger" onClick={() => this.props.onDeleteItem(entry)}>
                   Delete
                 </button>
               </td>

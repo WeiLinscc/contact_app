@@ -8,6 +8,7 @@ class Form extends Component {
     this.state = {
       ...props.editing
     };
+    console.log('edit contact form');
   }
 
   _handleTextChange = (key, value) => {
@@ -18,17 +19,18 @@ class Form extends Component {
 
   _update = () => {
     this.props.onUpdateEntry(this.state);
-    this._clear();
   };
 
-  _clear = () => {
-    this.setState({
-      id: null,
-      value1: '',
-      value2: '',
-      value3: ''
-    });
-  };
+  componentDidUpdate(prevProps) {
+    if (prevProps.editing !== this.props.editing) {
+      this.setState({...this.props.editing});
+    }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this._update();
+  }
 
   render() {
     return (
@@ -55,7 +57,7 @@ class Form extends Component {
             <input value={this.state.image} onChange={e => this._handleTextChange('image', e.target.value)} type="text" className="form-control" id="image" placeholder="Image" name="image" />
           </div> 
           <div className="col-12">
-            <button type="submit" className="btn btn-primary">Update Contact</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
           </div>
         </form>
       </div>

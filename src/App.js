@@ -55,7 +55,7 @@ class App extends Component {
         // update entries
         // return new entry where id matches one being editing
         this.setState({
-          editingItem: null,
+          editingItem: entry,
           entries: [...this.state.entries].map(i => {
             if (i.id === entry.id) {
               return entry;
@@ -94,12 +94,25 @@ class App extends Component {
           Add Contact 
         </button>
 
-        {this.state.editingItem ? (
-          <EditForm
-            editing={this.state.editingItem}
-            onUpdateEntry={this._updateEntry}
-          />
-        ) : null}
+          <div className="modal" id="editContactModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Update Contact</h5>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                {this.state.editingItem ? (
+                  <EditForm
+                    editing={this.state.editingItem}
+                    onUpdateEntry={this._updateEntry}
+                  />
+                ) : null}
+                </div>
+              </div>
+            </div>
+          </div>
+       
 
         <Table
           entries={this.state.entries}
