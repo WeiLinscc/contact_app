@@ -62,9 +62,9 @@ module.exports = {
 
   destroy(req, res, next) {
     db.query(
-      `DELETE FROM contacts  WHERE id = ?`,
+      `DELETE FROM contacts WHERE id = ?`,
       [req.params.item],
-      (err, result) => {
+      err => {
         if (err) {
           return res.sendStatus(500);
         }
