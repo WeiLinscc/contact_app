@@ -65,7 +65,7 @@ class Form extends Component {
             <input value={this.state.image} onChange={e => this._handleTextChange('image', e.target.value)} type="text" className="form-control" id="image" placeholder="Image" name="image" />
           </div> 
           <div className="col-12">
-            <button type="submit" className="btn btn-primary">Add Contact</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
           </div>
         </form>
       </div>
