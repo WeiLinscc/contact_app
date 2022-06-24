@@ -1,12 +1,12 @@
 const express = require('express');
-const ItemController = require('./controllers/ItemController');
+const ContactController = require('./controllers/ContactController');
 
 const router = express.Router();
 
 // app routes
-router.get('/items', ItemController.index);
-router.post('/items', ItemController.store);
-router.patch('/items/:item', ItemController.update);
-router.delete('/items/:item', ItemController.destroy);
+router.get('/items', ContactController.index);
+router.post('/items', ContactController.store);
+router.patch('/items/:item', ContactController.update);
+router.delete('/items/:item', ContactController.destroy);
 
 module.exports = router;
