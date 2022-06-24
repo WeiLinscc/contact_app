@@ -14,20 +14,26 @@ module.exports = {
   store(req, res, next) {
     db.query(
       `INSERT INTO contacts
-                (value1, value2, value3)
-                VALUES (?, ?, ?)`,
-      [req.body.item.value1, req.body.item.value2, req.body.item.value3],
-      (err, result) => {
+                (image, first_name, last_name, email, phone_number)
+                VALUES (?, ?, ?, ?, ?)`,
+      [
+        req.body.item.image,
+        req.body.item.first_name,
+        req.body.item.last_name,
+        req.body.item.email,
+        req.body.item.phone_number,
+      ], (err, result) => {
         if (err) {
-          return res.sendStatus(500);
+          return res.sendStatus(500, err);
         }
-
         return res.send({
           item: {
             id: result.insertId,
-            value1: req.body.item.value1,
-            value2: req.body.item.value2,
-            value3: req.body.item.value3
+            image: req.body.item.image,
+            first_name: req.body.item.first_name,
+            last_name: req.body.item.last_name,
+            email: req.body.item.email,
+            phone_number: req.body.item.phone_number,
           }
         });
       }
