@@ -42,18 +42,19 @@ module.exports = {
 
   update(req, res, next) {
     db.query(
-      `UPDATE contacts SET value1 = ?, value2 = ?, value3 = ? WHERE id = ?`,
+      `UPDATE contacts SET image = ?, first_name = ?, last_name = ?, email = ?, phone_number = ? WHERE id = ?`,
       [
-        req.body.item.value1,
-        req.body.item.value2,
-        req.body.item.value3,
+        req.body.item.image,
+        req.body.item.first_name,
+        req.body.item.last_name,
+        req.body.item.email,
+        req.body.item.phone_number,
         req.params.item
       ],
-      (err, result) => {
+      err => {
         if (err) {
           return res.sendStatus(500);
         }
-
         return res.sendStatus(200);
       }
     );
